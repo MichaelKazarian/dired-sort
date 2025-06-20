@@ -6,7 +6,7 @@
 ;; Version: 0.1
 ;; Keywords: dired, convenience
 ;; Package-Requires: ((emacs "24.4"))
-;; URL: https://your.repo.url/here
+;; URL: https://github.com/MichaelKazarian/dired-sort/
 ;; License: GPL-3+
 
 ;;; Commentary:
