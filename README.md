@@ -86,6 +86,7 @@ The following commands are available by default in `dired-sort.el`. You can invo
 ### Numbered Menu (`C-c m`)
 
 When you press `C-c m` (`dired-sort-show-menu`), you’ll see:
+![Dired Sort Menu](img/dired-sort-show-menu.png)
 
 ```text
 Choose sort option:
@@ -108,7 +109,7 @@ Enter number:
 ### Completion Menu (`C-c c`)
 
 When you press `C-c c` (`dired-sort-show-completion`), you’ll see a `completing-read` interface with options like:
-
+![Dired Sort Menu](img/dired-sort-show-completion.png)
 ```text
 Choose sort option:
  1. Sort by name                (M-g n)
