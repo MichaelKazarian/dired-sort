@@ -270,6 +270,17 @@ This variable is buffer-local in Dired buffers."
        (cons display fn)))
    indexed))
 
+(defun dired-sort-show-completion ()
+  "Show a completion menu of Dired sort commands with numbers and execute the selected one."
+  (interactive)
+  (let* ((indexed (dired-sort--indexed-commands))
+         (num-width (length (number-to-string (length indexed))))
+         (desc-width (dired-sort--description-width indexed))
+         (candidates (dired-sort--completion-candidates indexed num-width desc-width))
+         (choice (completing-read "Choose sort option: " candidates nil t)))
+    (when-let ((fn (cdr (assoc choice candidates))))
+      (call-interactively fn))))
+
 (defun dired-sort-setup-keys ()
   "Bind keys from `dired-sort--commands-map` in `dired-mode-map`."
   (dolist (entry dired-sort--commands-map)
