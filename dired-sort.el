@@ -78,23 +78,26 @@ This variable is buffer-local in Dired buffers."
       (forward-line 2)
       (insert dotdot))))
 
+(defun dired-sort--apply-listing ()
+  "Reapply Dired listing switches while preserving point and inserting `..` if needed."
+  (let ((pos (point)))
+    (dired-sort-other dired-listing-switches)
+    (dired-sort--insert-dot-dot)
+    (goto-char (min pos (point-max)))))
+
 (defun dired-sort-show-hidden-files ()
   "Enable showing hidden files in Dired."
   (interactive)
   (setq dired-listing-switches
         (format "-Alh --group-directories-first %s" dired-sort-extra-switches))
-  ;; (message "Hidden files: ON")
-  (dired-sort-other dired-listing-switches)
-  (dired-sort--insert-dot-dot))
+  (dired-sort--apply-listing))
 
 (defun dired-sort-hide-hidden-files ()
   "Disable showing hidden files in Dired and insert `..` manually."
   (interactive)
   (setq dired-listing-switches
         (format "-lh --group-directories-first %s" dired-sort-extra-switches))
-  ;; (message "Hidden files: OFF")
-  (dired-sort-other dired-listing-switches)
-  (dired-sort--insert-dot-dot))
+  (dired-sort--apply-listing))
 
 (defun dired-sort-toggle-hidden ()
   "Toggle visibility of hidden files in Dired."
